@@ -30,6 +30,7 @@ with open("out.json", 'w') as file_handler:
     ct = 1
     for file in glob.glob("*.cpp"):
         cnt = cnt + 1
+        print(cnt, file)
         i = lizard.analyze_file(file)
         ob = i.__dict__
         if len(ob['function_list']) == 0:
@@ -74,11 +75,16 @@ with open("out.json", 'w') as file_handler:
             ct = ct + 1
             fd.append(fn)
         d["function_details"] = fd
+        if(len(d['usertype']) == 2):
+            d['usertype'] = 'us'
         item = json.dumps(d, ensure_ascii=False)
         #print(jsonob)
-        if cnt < lenn:
-            file_handler.write("{},\n".format(item))
-        else:
-            file_handler.write("{}\n".format(item))
-        print(cnt)
+        try:
+            if cnt < lenn:
+                file_handler.write("{},\n".format(item))
+            else:
+                file_handler.write("{}\n".format(item))
+        except:
+            print(len(d['usertype']))
+            exit(-1)
     file_handler.write("]")  
