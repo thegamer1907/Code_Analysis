@@ -1,0 +1,14 @@
+# import the function as below : 
+
+from prep_for_headers import prep 
+
+
+read the code from file like below:
+with open('4398.cpp', 'r') as myfile:
+    data=myfile.read()
+
+and call the function 
+x = prep(data)...It will return a list of 2 lists, those 2 lists are required for running kailash's program
+so maybe call kailash's code like.
+
+find_all_used_header(data,x[0],x[1]).
