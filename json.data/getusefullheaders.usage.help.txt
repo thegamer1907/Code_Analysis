@@ -1,0 +1,13 @@
+# import the function as below : 
+
+from getusefullheaders import find_all_used_header 
+
+# read your code (string) and preprocess it and find all header files and their starting indices of their respective '#' prepare two 1D array containg headers in one array and their starting postion - rule : arr2[0] contains starting position of header at arr1[0]
+
+# call the function 
+
+x = find_all_used_header(code,headers,positions)
+
+print(x)
+
+#{'bits/stdc++.h': 1, 'queue': 0} - sample output
