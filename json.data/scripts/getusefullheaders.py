@@ -11,12 +11,15 @@ def find_all_used_header(code,headers,positions,version=14):
     import time
     import calendar
     import os
+    import shutil
     if len(headers) != len(positions):
         raise Exception('len(headers) != len(positions but expected to be of same length')
+    if not os.path.exists('./tmp'):
+    	os.makedirs('./tmp')
     m = {}
     random_ = str(calendar.timegm(time.gmtime()))
-    file_name = 'tmp.' + random_ + '.cpp'
-    exe_name = 'tmp.' + random_ + '.exe'
+    file_name = './tmp/tmp.' + random_ + '.cpp'
+    exe_name = './tmp/tmp.' + random_ + '.exe'
     for x,y in zip(headers,positions):
         code_ = code[:y] + '//' + code[y:]
         with open(file_name,'w') as cpp:
@@ -28,10 +31,6 @@ def find_all_used_header(code,headers,positions,version=14):
         except subprocess.CalledProcessError as out:                                                                                         
             m[x] = 1
             
-    if os.path.exists(file_name):
-        os.remove(file_name)
-    
-    if os.path.exists(exe_name):
-        os.remove(exe_name)
+    shutil.rmtree('./tmp') 
 
     return m
