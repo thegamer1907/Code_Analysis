@@ -1,0 +1,32 @@
+#include<bits/stdc++.h>
+using namespace std;
+#define frei(a)        freopen(a".inp","r",stdin)
+#define freo(a)        freopen(a".out","w",stdout)
+#define IOS ios_base::sync_with_stdio(false),cin.tie(NULL)
+void fre(){ofstream fre("42.inp");{fre<<R"(
+3
+3 -1 7
+-5 2 -4
+2 -1 -3
+)";}fre.close();frei("42");}
+inline long long in()  {long long x=0;int n=1;char c=getchar();while(!isdigit(c)){n=(c=='-')?-1:1;c=getchar();}while(isdigit(c)){x=x*10+c-'0';c=getchar();}return x*n;}
+#define FOR(i,a,b)     for(int i=a;i<=b;i++)
+#define ROF(i,a,b)     for(int i=b;i>=a;i--)
+#define VEC(i,a)       for(auto&i:a)
+#define reset(a,x)     memset(a,x,sizeof(a))
+#define eb             emplace_back
+#define int long long
+///
+int n,a,b,c;
+main()
+{
+   //fre();
+    n=in();
+    FOR(__,1,n)
+    {
+        int x=in(),y=in(),z=in();
+        a+=x,b+=y,c+=z;
+    }
+    if(a==0&&b==0&&c==0) cout<<"YES";
+    else cout<<"NO";
+}

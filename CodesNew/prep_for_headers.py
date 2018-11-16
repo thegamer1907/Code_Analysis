@@ -9,7 +9,8 @@ def prep(data):
         tp = g[i][:]
         g[i] = tp.split('.')[0]
     return [g,d]
-	
+    
+
 
 def prep_for_macros(data):
     d1 = [x.start() for x in re.finditer('#define', data)]
@@ -18,10 +19,10 @@ def prep_for_macros(data):
     g = re.findall('#define(\s*.*\s)',data)
     h = re.findall('typedef(\s*.*\s)',data)
     for i in range(0,len(g)):
-        tp = g[i][:]
-        g[i] = tp.split(' ')[1]
+        g[i] = g[i].strip()
+        g[i] = g[i].split(' ')[0]
     for i in range(0,len(h)):
-        tp1 = h[i][:]
-        h[i] = tp1.split(' ')[-1].split(';')[0]
+        h[i] = h[i].strip()
+        h[i] = h[i].split(' ')[-1].split(';')[0]
     return [g[:] + h[:],d]
 

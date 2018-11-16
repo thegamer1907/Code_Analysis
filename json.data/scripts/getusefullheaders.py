@@ -23,7 +23,7 @@ def find_all_used_header(code,headers,positions,version=14):
             cpp.write(code_)
             
         try:
-            out = subprocess.check_output(['g++','-std=c++' + str(version),file_name,'-o',exe_name])
+            out = subprocess.check_output(['g++',file_name,'-o',exe_name])
             m[x] = 0
         except subprocess.CalledProcessError as out:                                                                                         
             m[x] = 1
