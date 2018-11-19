@@ -1,0 +1,2 @@
+#include <bits/stdc++.h>
+typedef long long ll;using namespace std;int main() {string s;cin >> s;ll n;cin >> n;bool ok1 = 0;bool ok2 = 0;bool ok3 = 0;for(int i = 1; i <= n; i++) {string a;cin >> a;if(a == s) {ok3 = 1;}if(a[0] == s[1]) ok1 = 1;if(a[1] == s[0]) ok2 = 1;}if(ok3 || (ok1 && ok2)) {cout << "YES";} else cout << "NO";}
