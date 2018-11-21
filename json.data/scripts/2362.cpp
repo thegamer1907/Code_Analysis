@@ -33,7 +33,7 @@
 
 
 using namespace std;
-
+unsigned long long int
 typedef long long ll;
 typedef unsigned long long ull;
 typedef double md;
