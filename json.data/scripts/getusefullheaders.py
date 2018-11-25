@@ -24,7 +24,6 @@ def find_all_used_header(code,headers,positions,version=14):
         code_ = code[:y] + '//' + code[y:]
         with open(file_name,'w') as cpp:
             cpp.write(code_)
-            
         try:
             out = subprocess.check_output(['g++',file_name,'-o',exe_name])
             m[x] = 0
