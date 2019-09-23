@@ -1,4 +1,4 @@
-def find_all_used_header(code,headers,positions,version=14):
+def find_all_used_header(code, headers, positions, version=14):
     '''
     params:
     code : string the complete code
@@ -13,24 +13,25 @@ def find_all_used_header(code,headers,positions,version=14):
     import os
     import shutil
     if len(headers) != len(positions):
-        raise Exception('len(headers) != len(positions but expected to be of same length')
+        raise Exception(
+            'len(headers) != len(positions but expected to be of same length')
     if not os.path.exists('./tmp'):
-    	os.makedirs('./tmp')
+        os.makedirs('./tmp')
     m = {}
     random_ = str(calendar.timegm(time.gmtime()))
     file_name = './tmp/tmp.' + random_ + '.cpp'
     exe_name = './tmp/tmp.' + random_ + '.exe'
-    for x,y in zip(headers,positions):
+    for x, y in zip(headers, positions):
         code_ = code[:y] + '//' + code[y:]
-        with open(file_name,'w') as cpp:
+        with open(file_name, 'w') as cpp:
             cpp.write(code_)
-            
+
         try:
-            out = subprocess.check_output(['g++',file_name,'-o',exe_name])
+            out = subprocess.check_output(['g++', file_name, '-o', exe_name])
             m[x] = 0
-        except subprocess.CalledProcessError as out:                                                                                         
+        except subprocess.CalledProcessError as out:
             m[x] = 1
-            
-    shutil.rmtree('./tmp') 
+
+    shutil.rmtree('./tmp')
 
     return m
